@@ -29,7 +29,8 @@ namespace DrawingSoft
             this.AddDrawingVisual(drawingVisualDashRect);
             this.AddDrawingVisual(new ShapePowerSourse(new Point(80, 80)));
             this.AddDrawingVisual(new ShapePowerSourse(new Point(100, 100)));
-          
+            this.AddDrawingVisual(new ShapeDoubleSwitch(new Point(120, 120)));
+            this.AddDrawingVisual(new ShapeSingleSwitch(new Point(140, 140)));
         }
         //自定义方法实现元素的添加,并使其显示
         public void AddDrawingVisual(Shape shape)
