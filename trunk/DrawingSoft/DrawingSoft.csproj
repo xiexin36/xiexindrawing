@@ -89,11 +89,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CanvasDraw.cs" />
+    <Compile Include="控件模板\LineTwoPoint.cs" />
     <Compile Include="PointResize.cs" />
     <Compile Include="控件模板\ShapeControl.cs" />
     <Compile Include="控件模板\ShapeDoubleSwitch.cs" />
     <Compile Include="控件模板\ShapePowerSourse.cs" />
-    <Compile Include="控件模板\ConnectPoint.cs" />
+    <Compile Include="控件模板\PointConnect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

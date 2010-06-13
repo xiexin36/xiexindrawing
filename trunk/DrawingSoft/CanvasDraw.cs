@@ -11,13 +11,16 @@ namespace DrawingSoft
     class CanvasDraw:Canvas
     {
         public Shape LastClickShape = null;//保存最后一个被选中的对象
+        public Point LastClickPointLocation = new Point(0,0);
         public List<Shape> listShapes=new List<Shape>();//保存所有的对象集合
         private readonly static Point DashRectangleLocation=new Point(4,4);
 
         private Shape drawingVisualBackground=new Shape();//画布背景的DrawingVisua
         private Shape LastMoveInShape;//保存最后进入的对象
+        private LineTwoPoint line = new LineTwoPoint();
         public Shape drawingVisualDashRect = new Shape();//绘制虚线框
         public ScaleTransform resizeTransform = new ScaleTransform();
+
 
         public CanvasDraw()
         {
@@ -27,6 +30,7 @@ namespace DrawingSoft
             this.PaintBackground(new Point(500, 300));
             this.AddDrawingVisual(this.drawingVisualBackground);
             this.AddDrawingVisual(drawingVisualDashRect);
+            this.AddDrawingVisual(this.line);
             this.AddDrawingVisual(new ShapePowerSourse(new Point(80, 80)));
             this.AddDrawingVisual(new ShapePowerSourse(new Point(100, 100)));
             this.AddDrawingVisual(new ShapeDoubleSwitch(new Point(120, 120)));
@@ -106,6 +110,7 @@ namespace DrawingSoft
                 Shape dv = result.VisualHit as Shape;
                 dv.LeftClickToDo(Brushes.Red);
                 this.LastClickShape = dv;
+                this.LastClickPointLocation = location;
             }
         }
 
@@ -123,6 +128,19 @@ namespace DrawingSoft
                 if (location.X >= this.MinWidth-15 || location.Y >= this.MinHeight-15)         
                     return;           
                 this.LastClickShape.MouseMoveToDo(location);
+                //实现连线时的射线绘制
+                if (this.LastClickShape is PointConnect)
+                {
+                    this.LastMoveInShape.MouseLeaveToDo();//使上次准备连接的点直接消失
+                    line.LineConnect(this.LastClickPointLocation, location);
+                    HitTestResult result = VisualTreeHelper.HitTest(this, location);
+                    if (result.VisualHit is PointConnect)
+                    {
+                        PointConnect dv = result.VisualHit as PointConnect;
+                        dv.MouseEnterToDo();
+                        this.LastMoveInShape = dv;
+                    }
+                }
             }
             else //设置相应的鼠标进入事件
             {
@@ -148,7 +166,7 @@ namespace DrawingSoft
             base.OnMouseUp(e);
             if (this.drawingVisualDashRect.Opacity==1&&this.LastClickShape is PointResize)
             {
-                //this.drawingVisualDashRect.Opacity = 0;
+                this.drawingVisualDashRect.Opacity = 0;
                 this.PaintBackground(e.GetPosition(this));
             }
         }
