@@ -23,6 +23,7 @@ namespace DrawingSoft
 
         public override void Paint(Point location)
         {
+            
             DrawingContext dc = this.RenderOpen();
             using(dc)
             {
