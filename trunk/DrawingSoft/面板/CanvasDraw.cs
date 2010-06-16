@@ -29,15 +29,12 @@ namespace DrawingSoft
             this.LastMoveInShape =this.LastClickShape= drawingVisualBackground;
             this.drawingVisualDashRect.Opacity = 0;
             
+
+
             this.PaintBackground(new Point(500, 300));
             this.AddDrawingVisual(this.drawingVisualBackground);
             this.AddDrawingVisual(drawingVisualDashRect);
             this.AddDrawingVisual(this.line);
-            for (int i = 0; i < 1000;i++ )
-            {
-                this.AddDrawingVisual(new ShapePowerSourse(new Point(10+i, i)));
-            }
-            this.AddDrawingVisual(new ShapePowerSourse(new Point(400, 200)));
             this.AddDrawingVisual(new ShapePowerSourse(new Point(100, 100)));
             this.AddDrawingVisual(new ShapeDoubleSwitch(new Point(120, 120)));
             this.AddDrawingVisual(new ShapeSingleSwitch(new Point(140, 140)));
@@ -185,13 +182,16 @@ namespace DrawingSoft
             {
                 if (location.X >= this.MinWidth-15 || location.Y >= this.MinHeight-15)         
                     return;           
-                this.LastClickShape.MouseMoveToDo(location);
+                this.LastClickShape.MouseMoveToDo(location);//控件拖动
                 //实现连线时的射线绘制
                 if (this.LastClickShape is PointConnect)
                 {
                     this.LastMoveInShape.MouseLeaveToDo();//使上次准备连接的点直接消失
                     PointConnect p = this.LastClickShape as PointConnect;
                     line.LineConnect(p.GetNowLocation(), location);
+
+                    Console.WriteLine(location);
+
                     HitTestResult result = VisualTreeHelper.HitTest(this, location);
                     if (result.VisualHit is PointConnect)
                     {
@@ -231,17 +231,21 @@ namespace DrawingSoft
             }
             else if (this.LastClickShape is PointConnect)
             {
+                this.line.Opacity = 0;//使连接射线不显示
                 Point location = e.GetPosition(this);
+
+                Console.WriteLine(location);
+
                 HitTestResult result = VisualTreeHelper.HitTest(this, location);
+
                 if (result.VisualHit is PointConnect)
-                {
-                    this.line.Opacity = 0;
+                {                
                     PointConnect pointEnd = result.VisualHit as PointConnect;
                     PointConnect pointStart=this.LastClickShape as PointConnect;
+
+                    Console.WriteLine(pointEnd.GetNowLocation()+"   "+pointStart.GetNowLocation());
                     this.AddDrawingVisual(new LineSwitchConnect(pointStart,pointEnd));
                 }
-                else
-                    this.line.Opacity = 0;
             }
         }
     }

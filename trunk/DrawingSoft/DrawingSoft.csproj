@@ -89,6 +89,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassToSave.cs" />
     <Compile Include="ShapeLine.cs" />
     <Compile Include="面板\CanvasButton.cs" />
     <Compile Include="控件模板\LineSub.cs" />
