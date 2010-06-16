@@ -15,6 +15,7 @@ namespace DrawingSoft
             get { return lineConnect; }
             set { lineConnect = value; }
         }
+
         public PointConnect()
         {
             this.Opacity = 0;

@@ -57,7 +57,7 @@
                 </TabControl>         
             
             <ScrollViewer Background="LightSteelBlue"  Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseMove="ScrollViewer_MouseMove" MouseUp="ScrollViewer_MouseUp">
-                <drawSoft:CanvasDraw x:Name="canvasDrawPanel"  HorizontalAlignment="Left" VerticalAlignment="Top" Background="DeepPink">
+                <drawSoft:CanvasDraw x:Name="canvasDrawPanel"  HorizontalAlignment="Left" VerticalAlignment="Top" Background="Yellow">
                 </drawSoft:CanvasDraw>
             </ScrollViewer>
         </Grid>

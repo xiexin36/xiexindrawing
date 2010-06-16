@@ -40,7 +40,7 @@ namespace DrawingSoft
         public Point GetNowLocation()
         {
             MainWindow w = (MainWindow)Application.Current.MainWindow;
-            Point p = this.TransformToAncestor(w.canvasDrawPanel).Transform(w.canvasDrawPanel.LastClickShape.ContentBounds.Location);
+            Point p = this.TransformToAncestor(w.canvasDrawPanel).Transform(this.ContentBounds.Location);
             return Point.Add(p, new Vector(4, 4));
         }
     }

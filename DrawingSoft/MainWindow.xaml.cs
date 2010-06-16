@@ -21,7 +21,8 @@ namespace DrawingSoft
     {
         public MainWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            
         }
 
         public void setCanvasMouseShape(Cursor nowCursor)

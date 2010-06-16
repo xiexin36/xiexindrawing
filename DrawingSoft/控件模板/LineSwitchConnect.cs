@@ -12,18 +12,21 @@ namespace DrawingSoft
         /// 保存经过的点
         /// </summary>
         private List<Point> listPoints=new List<Point>();
-        private List<Visual> hitResultsList = new List<Visual>();
+        private List<ShapeControl> hitResultsList = new List<ShapeControl>();
         private bool LineSubdirection = true;//true代表水平,fale代表垂直
         private Point endPoint;//连线的终点
         private const double subLength = 10;//确定每次探查的步进
 
-        public LineSwitchConnect(PointConnect startPoint,PointConnect endPointConnect)
+        public LineSwitchConnect(PointConnect startPointConnect,PointConnect endPointConnect)
         {
             //使连接点保存连接线对象
-            startPoint.LineConnect = this;
+            startPointConnect.LineConnect = this;
             endPointConnect.LineConnect = this;
             //获取点的当前位置
-            this.GetPath(startPoint.GetNowLocation(), endPointConnect.GetNowLocation());
+            this.GetPath(startPointConnect.GetNowLocation(), endPointConnect.GetNowLocation());
+            Console.WriteLine(startPointConnect.GetNowLocation()+"    "+endPointConnect.GetNowLocation());
+            Console.WriteLine("isRun");
+            Paint(1);
         }
 
         /// <summary>
@@ -121,62 +124,69 @@ namespace DrawingSoft
         /// <param name="pt"></param>
         public void MyHitTest(Point pt,Vector v)
         {      
-            LineGeometry expandedHitTestArea = new LineGeometry(pt, Point.Add(pt,v));
+            LineGeometry expandedHitTestArea = new LineGeometry(new Point(90,110), new Point(160,110));
             hitResultsList.Clear();
-
+            Console.WriteLine("heelo");
             VisualTreeHelper.HitTest((Application.Current.MainWindow as MainWindow).canvasDrawPanel, null,
                 new HitTestResultCallback(MyHitTestResultCallback),
                 new GeometryHitTestParameters(expandedHitTestArea));
+            Console.WriteLine("world");
+
 
             //生成拐点,查找边界
-            if (hitResultsList.Count > 0)
-            {
-                this.listPoints.Add(pt);
-                ProcessHitTestResultsList();
-            }
-            else//继续查找拐点
-            {
-                if (this.LineSubdirection)//继续水平查找
-                {
-                    double lengthX;
-                    if (pt.X < this.endPoint.X)//水平探查向右走
-                    {
-                        lengthX = endPoint.X - pt.X;
-                        if (lengthX > subLength)
-                            MyHitTest(pt, new Vector(subLength, 0));
-                        else
-                            MyHitTest(pt, new Vector(lengthX, 0));
-                    }
-                    else
-                    {
-                        lengthX = pt.X - endPoint.X;
-                        if (lengthX > subLength)
-                            MyHitTest(pt, new Vector(-subLength, 0));
-                        else
-                            MyHitTest(pt, new Vector(-lengthX, 0));
-                    }              
-                }
-                else
-                {
-                    double lengthY;
-                    if (pt.Y < this.endPoint.Y)//垂直探查向下走
-                    {
-                        lengthY = endPoint.Y - pt.Y;
-                        if (lengthY > subLength)
-                            MyHitTest(pt, new Vector(subLength, 0));
-                        else
-                            MyHitTest(pt, new Vector(lengthY, 0));
-                    }
-                    else
-                    {
-                        lengthY = pt.Y - endPoint.Y;
-                        if (lengthY > subLength)
-                            MyHitTest(pt, new Vector(-subLength, 0));
-                        else
-                            MyHitTest(pt, new Vector(-lengthY, 0));
-                    }
-                }
-            }
+            //if (hitResultsList.Count > 0)
+            //{
+            //    if (Point.Add(pt, v).X == this.endPoint.X && Point.Add(pt, v).Y == this.endPoint.Y)
+            //    {
+            //        this.listPoints.Add(this.endPoint);
+            //        return;
+            //    }
+            //    this.listPoints.Add(pt);
+            //    ProcessHitTestResultsList();
+            //}
+            //else//继续查找拐点
+            //{
+            //    if (this.LineSubdirection)//继续水平查找
+            //    {
+            //        double lengthX;
+            //        if (pt.X < this.endPoint.X)//水平探查向右走
+            //        {
+            //            lengthX = endPoint.X - pt.X;
+            //            if (lengthX > subLength)
+            //                MyHitTest(pt, new Vector(subLength, 0));
+            //            else
+            //                MyHitTest(pt, new Vector(lengthX, 0));
+            //        }
+            //        else
+            //        {
+            //            lengthX = pt.X - endPoint.X;
+            //            if (lengthX > subLength)
+            //                MyHitTest(pt, new Vector(-subLength, 0));
+            //            else
+            //                MyHitTest(pt, new Vector(-lengthX, 0));
+            //        }              
+            //    }
+            //    else
+            //    {
+            //        double lengthY;
+            //        if (pt.Y < this.endPoint.Y)//垂直探查向下走
+            //        {
+            //            lengthY = endPoint.Y - pt.Y;
+            //            if (lengthY > subLength)
+            //                MyHitTest(pt, new Vector(subLength, 0));
+            //            else
+            //                MyHitTest(pt, new Vector(lengthY, 0));
+            //        }
+            //        else
+            //        {
+            //            lengthY = pt.Y - endPoint.Y;
+            //            if (lengthY > subLength)
+            //                MyHitTest(pt, new Vector(-subLength, 0));
+            //            else
+            //                MyHitTest(pt, new Vector(-lengthY, 0));
+            //        }
+            //    }
+            //}
         }
 
         /// <summary>
@@ -191,14 +201,20 @@ namespace DrawingSoft
         public HitTestResultBehavior MyHitTestResultCallback(HitTestResult result)
         {
             IntersectionDetail intersectionDetail = ((GeometryHitTestResult)result).IntersectionDetail;
-            if (intersectionDetail != IntersectionDetail.Empty)
+            Console.WriteLine(intersectionDetail.ToString());
+            Console.WriteLine(result.VisualHit);
+            if (result.VisualHit is ShapeControl)//只有命中控件才避开,添加命中结果
             {
-                if (result.VisualHit is ShapeControl)//只有命中控件才避开,添加命中结果
-                {
-                    this.hitResultsList.Add(result.VisualHit as Visual);
-                }
+                this.hitResultsList.Add(result.VisualHit as ShapeControl);
+                Console.WriteLine(this.hitResultsList[0].GetNowLocation());
             }
-            return  HitTestResultBehavior.Stop;
+            if (result.VisualHit is PointConnect)
+            {
+                ShapeControl parent = (ShapeControl)((PointConnect)result.VisualHit).Parent;
+                Console.WriteLine(parent.ContentBounds.Location);
+                this.hitResultsList.Add(parent);
+            }
+            return HitTestResultBehavior.Stop;            
         }
 
     }
