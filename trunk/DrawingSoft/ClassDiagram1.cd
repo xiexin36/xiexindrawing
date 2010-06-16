@@ -10,7 +10,7 @@
   <Class Name="DrawingSoft.PointConnect" Collapsed="true">
     <Position X="2.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAQAAAAEABAAAAAAAAAAAAAAAAAAAAIEAIAAA=</HashCode>
+      <HashCode>AAAAAAAAQAAAAEABAAAAAAAAAAAAAAAAAAAAIAAIAAA=</HashCode>
       <FileName>控件模板\PointConnect.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -30,13 +30,6 @@
   </Class>
   <Class Name="DrawingSoft.PointResize" Collapsed="true">
     <Position X="2.75" Y="1.75" Width="1.5" />
-    <NestedTypes>
-      <Enum Name="DrawingSoft.PointResize.PointStyles" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>控件模板\PointResize.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAgAAAAAAAAAAAAAIEAIAAA=</HashCode>
       <FileName>控件模板\PointResize.cs</FileName>
@@ -58,14 +51,6 @@
   </Class>
   <Class Name="DrawingSoft.LineTwoPoint" Collapsed="true">
     <Position X="7.25" Y="3.75" Width="1.5" />
-    <InheritanceLine Type="DrawingSoft.ShapeLine" FixedFromPoint="true">
-      <Path>
-        <Point X="5.75" Y="4.938" />
-        <Point X="6.125" Y="4.938" />
-        <Point X="6.125" Y="4.094" />
-        <Point X="7.25" Y="4.094" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>控件模板\LineTwoPoint.cs</FileName>
@@ -81,7 +66,7 @@
   <Class Name="DrawingSoft.LineSwitchConnect" Collapsed="true">
     <Position X="7.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAgAAAAAAAAAAAAAgACACAAAAAAgEAIgAA=</HashCode>
+      <HashCode>AAgAAAAAAAAgACAAAEAAAAQAAgCCAAAAAAAAgEAIgAA=</HashCode>
       <FileName>控件模板\LineSwitchConnect.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -90,6 +75,27 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ShapeLine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrawingSoft.Ammeter" Collapsed="true">
+    <Position X="5.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>控件模板\Ammeter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrawingSoft.Voltmeter" Collapsed="true">
+    <Position X="1.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>控件模板\Voltmeter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrawingSoft.ShapeLight" Collapsed="true">
+    <Position X="7.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>控件模板\ShapeLight.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="微软雅黑" Size="9" />
