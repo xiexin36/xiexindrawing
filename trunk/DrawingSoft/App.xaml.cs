@@ -12,5 +12,6 @@ namespace DrawingSoft
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

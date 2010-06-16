@@ -1,73 +1,95 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="DrawingSoft.Shape">
-    <Position X="0.5" Y="0.75" Width="1.5" />
+  <Class Name="DrawingSoft.Shape" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAABAAAAAAgAAAAAAACAAAAAIEAIAAA=</HashCode>
+      <HashCode>AAgAAAAAAAAAAAABAAAAAAgAAAAAAAGAAAAAIEAIAAA=</HashCode>
       <FileName>控件模板\Shape.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DrawingSoft.PointConnect">
-    <Position X="2.75" Y="0.75" Width="1.5" />
+  <Class Name="DrawingSoft.PointConnect" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAIEAIAAA=</HashCode>
+      <HashCode>AAgAAAAAQAAAAEABAAAAAAAAAAAAAAAAAAAAIEAIAAA=</HashCode>
       <FileName>控件模板\PointConnect.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DrawingSoft.ToolMouseShape">
-    <Position X="4.75" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
-      <FileName>鼠标指针控制\ToolMouseShape.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="DrawingSoft.ShapePowerSourse">
-    <Position X="2.75" Y="3.75" Width="1.5" />
+  <Class Name="DrawingSoft.ShapePowerSourse" Collapsed="true">
+    <Position X="3.75" Y="6.75" Width="1.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAIAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
       <FileName>控件模板\ShapePowerSourse.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DrawingSoft.ShapeControl">
-    <Position X="0.5" Y="3.75" Width="1.5" />
+  <Class Name="DrawingSoft.ShapeControl" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAABAAAAAAAAAIEAIAAA=</HashCode>
+      <HashCode>UAgAAAAAAAAAAAAAAAAAAAgAEABAAAAAAAAAIEAIAAA=</HashCode>
       <FileName>控件模板\ShapeControl.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DrawingSoft.PointResize">
-    <Position X="4.75" Y="3.5" Width="1.5" />
+  <Class Name="DrawingSoft.PointResize" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
     <NestedTypes>
       <Enum Name="DrawingSoft.PointResize.PointStyles" Collapsed="true">
         <TypeIdentifier>
-          <NewMemberFileName>PointResize.cs</NewMemberFileName>
+          <NewMemberFileName>控件模板\PointResize.cs</NewMemberFileName>
         </TypeIdentifier>
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAgAAAAAAAAAAAAAIEAIAAA=</HashCode>
-      <FileName>PointResize.cs</FileName>
+      <FileName>控件模板\PointResize.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DrawingSoft.ShapeDoubleSwitch">
-    <Position X="6.25" Y="6.5" Width="1.5" />
+  <Class Name="DrawingSoft.ShapeDoubleSwitch" Collapsed="true">
+    <Position X="2.25" Y="6.75" Width="1.25" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAgAAAAAAAAAAQAAAAAAAAAAAAAAAIAAA=</HashCode>
       <FileName>控件模板\ShapeDoubleSwitch.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DrawingSoft.ShapeSingleSwitch">
-    <Position X="2.75" Y="6" Width="1.5" />
+  <Class Name="DrawingSoft.ShapeSingleSwitch" Collapsed="true">
+    <Position X="0.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAIAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
       <FileName>控件模板\ShapeSingleSwitch.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="DrawingSoft.LineTwoPoint">
-    <Position X="6.5" Y="2.25" Width="1.5" />
+  <Class Name="DrawingSoft.LineTwoPoint" Collapsed="true">
+    <Position X="7.25" Y="3.75" Width="1.5" />
+    <InheritanceLine Type="DrawingSoft.ShapeLine" FixedFromPoint="true">
+      <Path>
+        <Point X="5.75" Y="4.938" />
+        <Point X="6.125" Y="4.938" />
+        <Point X="6.125" Y="4.094" />
+        <Point X="7.25" Y="4.094" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAEAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>控件模板\LineTwoPoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrawingSoft.LineSub" Collapsed="true">
+    <Position X="7.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAIAAA=</HashCode>
+      <FileName>控件模板\LineSub.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrawingSoft.LineSwitchConnect" Collapsed="true">
+    <Position X="7.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAgAAAAAAAAAAAAAgACACAAAAAAgEAIgAA=</HashCode>
+      <FileName>控件模板\LineSwitchConnect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrawingSoft.ShapeLine">
+    <Position X="4.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ShapeLine.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="微软雅黑" Size="9" />

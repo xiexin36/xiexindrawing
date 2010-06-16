@@ -8,6 +8,13 @@ namespace DrawingSoft
 {
     public class PointConnect : Shape
     {
+        private LineSwitchConnect lineConnect = null;
+
+        internal LineSwitchConnect LineConnect
+        {
+            get { return lineConnect; }
+            set { lineConnect = value; }
+        }
         public PointConnect()
         {
             this.Opacity = 0;
@@ -17,10 +24,6 @@ namespace DrawingSoft
         {
             this.Opacity = 0;
             this.Paint(location);
-        }
-
-        public override void LeftClickToDo(Brush color)
-        {
         }
 
         public override void Paint(Point location)
