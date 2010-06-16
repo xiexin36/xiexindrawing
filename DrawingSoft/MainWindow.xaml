@@ -2,42 +2,64 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:drawSoft="clr-namespace:DrawingSoft"
-    Title="DrawSoft" Height="517.5" Width="740" KeyDown="Window_KeyDown">
+    Title="DrawSoft" Height="517.5" Width="740">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" ></RowDefinition>
-            <RowDefinition ></RowDefinition>
-        </Grid.RowDefinitions>
-        <StackPanel  Grid.Row="0" Grid.Column="0">
-            <Menu Name="Menu_Main"  HorizontalContentAlignment="Stretch"  Visibility="Collapsed">
-                <MenuItem Header="文件" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                    <MenuItem Header="打开" Name="MenuItem_Open" />
-                    <MenuItem Header="保存" Name="MenuItem_Save" />
-                </MenuItem>
-                <MenuItem Header="编辑" />
-            </Menu>
-            <TabControl Height="auto">
-                <TabItem Header="主页">
-                    <Canvas Height="75" Width="auto" Background="AliceBlue">
-                        <Label Canvas.Left="7.5" Canvas.Top="10" Height="27.5" Name="label1" Width="48.75">Label</Label>
-                        <Label Canvas.Left="7.5" Canvas.Top="45" Height="27.5" Name="label2" Width="48.75">Label</Label>
-                        <Separator Canvas.Left="60" Canvas.Top="7.5" Height="7.5" Name="separator1" Width="66.25" >
-                            <Separator.LayoutTransform>
-                                <RotateTransform Angle="90"></RotateTransform>
-                            </Separator.LayoutTransform>
-                        </Separator>
-                        <Separator Canvas.Left="150" Canvas.Top="7.5" Height="7.5" Name="separator2" Width="66.25">
-                            <Separator.LayoutTransform>
-                                <RotateTransform Angle="90" />
-                            </Separator.LayoutTransform>
-                        </Separator>
-                    </Canvas>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90" ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+            </Grid.RowDefinitions>
+                <TabControl Name="myTabControl"  Height="90" SelectedIndex="1" Padding="2" Grid.Row="0">
+                    <TabItem Header="文件" Width="60" >
+                    <StackPanel Orientation="Horizontal">
+                        <Button Background="GreenYellow" Width="48" ToolTip="打开">
+                            <Image Source="图片/Open.ico" Stretch="Uniform" ></Image>
+                        </Button>
+                        <Button Background="GreenYellow" Width="48" ToolTip="保存">
+                            <Image Source="图片/Save.ico" Stretch="Uniform" ></Image>
+                        </Button>
+                        <Button Name="newButton"  Click="newButton_Click"  Background="GreenYellow" Width="48" ToolTip="新建">
+                            <Image Source="图片/New.ico" Stretch="Uniform" ></Image>
+                        </Button>
+                        <Button Background="GreenYellow" Width="48" ToolTip="另存为">
+                            <Image Source="图片/SaveAnother.ico" Stretch="Uniform" ></Image>
+                        </Button>
+                        <Button Background="GreenYellow" Width="48" ToolTip="打印">
+                            <Image Source="图片/print.ico" Stretch="Uniform" ></Image>
+                        </Button>
+                    </StackPanel>
                 </TabItem>
-                <TabItem Header="查看"></TabItem>
-            </TabControl>
-        </StackPanel>
-        <ScrollViewer Background="LightSteelBlue"  Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseMove="ScrollViewer_MouseMove" MouseUp="ScrollViewer_MouseUp">
-            <drawSoft:CanvasDraw x:Name="canvasDrawPanel"  HorizontalAlignment="Left" VerticalAlignment="Top" ></drawSoft:CanvasDraw>
-        </ScrollViewer>        
-    </Grid>
+                    <TabItem  Header="工具" >
+                        <StackPanel Orientation="Horizontal">
+                            <Label Background="GreenYellow"  Name="label0" BorderBrush="Gray"  BorderThickness="1" Padding="2">
+                                <drawSoft:RibbonPanel  Width="78">
+                                    <Grid Background="GreenYellow">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                    <Button Background="GreenYellow">
+                                        <Image Grid.Row="0" Stretch="none" Source="图片/iconPaste.bmp"/>
+                                    </Button>                                       
+                                        <Label Margin="10,0" Grid.Row="1">粘贴</Label>
+                                    </Grid>
+                                <Button Background="GreenYellow">
+                                    <Image Source="图片/iconCut.bmp"/>
+                                </Button>
+                                    <Button Background="GreenYellow">
+                                    <Image Source="图片/iconCopy.bmp"/>
+                                </Button>
+                                </drawSoft:RibbonPanel>
+                            </Label>
+                    </StackPanel>
+                    </TabItem>
+                    <TabItem Header="查看"></TabItem>
+                </TabControl>         
+            
+            <ScrollViewer Background="LightSteelBlue"  Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MouseMove="ScrollViewer_MouseMove" MouseUp="ScrollViewer_MouseUp">
+                <drawSoft:CanvasDraw x:Name="canvasDrawPanel"  HorizontalAlignment="Left" VerticalAlignment="Top" Background="DeepPink">
+                </drawSoft:CanvasDraw>
+            </ScrollViewer>
+        </Grid>
+    </Grid>       
 </Window>

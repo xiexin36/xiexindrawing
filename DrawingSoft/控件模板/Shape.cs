@@ -9,11 +9,14 @@ namespace DrawingSoft
 {
     public class Shape:DrawingVisual
     {
-        protected Brush color = Brushes.Black;
+        public SolidColorBrush color = Brushes.Black;
         public  Shape()
         {}
 
-        public virtual void LeftClickToDo(Brush color)
+        public virtual void LeaveLeftClickToDo()
+        {}
+
+        public virtual void LeftClickToDo()
         {}
 
         public virtual void Paint(Point location)
@@ -29,5 +32,16 @@ namespace DrawingSoft
 
         public virtual void MouseMoveToDo(Point offset)
         {}
+
+        /// <summary>
+        /// 返回点当前的位置,相对于面板
+        /// </summary>
+        /// <returns></returns>
+        public Point GetNowLocation()
+        {
+            MainWindow w = (MainWindow)Application.Current.MainWindow;
+            Point p = this.TransformToAncestor(w.canvasDrawPanel).Transform(w.canvasDrawPanel.LastClickShape.ContentBounds.Location);
+            return Point.Add(p, new Vector(4, 4));
+        }
     }
 }

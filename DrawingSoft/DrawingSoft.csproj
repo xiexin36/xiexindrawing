@@ -44,6 +44,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -88,9 +89,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CanvasDraw.cs" />
+    <Compile Include="ShapeLine.cs" />
+    <Compile Include="面板\CanvasButton.cs" />
+    <Compile Include="控件模板\LineSub.cs" />
+    <Compile Include="钩子设置\HookInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="面板\CanvasDraw.cs" />
+    <Compile Include="控件模板\LineSwitchConnect.cs" />
+    <Compile Include="钩子设置\PublicVariable.cs" />
+    <Compile Include="钩子设置\WIN32API.cs" />
     <Compile Include="控件模板\LineTwoPoint.cs" />
-    <Compile Include="PointResize.cs" />
+    <Compile Include="控件模板\PointResize.cs" />
     <Compile Include="控件模板\ShapeControl.cs" />
     <Compile Include="控件模板\ShapeDoubleSwitch.cs" />
     <Compile Include="控件模板\ShapePowerSourse.cs" />
@@ -109,8 +119,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="控件模板\ShapeSingleSwitch.cs" />
-    <Compile Include="鼠标指针控制\ToolMouseShape.cs" />
+    <Compile Include="工具\ToolMouseShape.cs" />
     <Compile Include="控件模板\Shape.cs" />
+    <Compile Include="面板\RibbonPanel.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -122,6 +133,31 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="图片\iconBorders.bmp" />
+    <Resource Include="图片\iconCopy.bmp" />
+    <Resource Include="图片\iconCut.bmp" />
+    <Resource Include="图片\iconPaste.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="图片\NewFile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="图片\FileMenu.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="图片\Open.bmp" />
+    <Resource Include="图片\Printe.bmp" />
+    <Resource Include="图片\Save.bmp" />
+    <Resource Include="图片\SaveAnother.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="图片\Print.ico" />
+    <Resource Include="图片\Open.ico" />
+    <Resource Include="图片\Save.ico" />
+    <Resource Include="图片\New.ico" />
+    <Resource Include="图片\SaveAnother.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

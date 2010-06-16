@@ -8,7 +8,10 @@ using System.Windows.Media.Effects;
 
 namespace DrawingSoft
 {
-    class LineTwoPoint:Shape
+    /// <summary>
+    /// 连线初始阶段,绘制射线
+    /// </summary>
+    class LineTwoPoint : ShapeLine
     {
         public LineTwoPoint()
         {

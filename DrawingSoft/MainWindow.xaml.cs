@@ -21,25 +21,12 @@ namespace DrawingSoft
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         public void setCanvasMouseShape(Cursor nowCursor)
         {
             this.canvasDrawPanel.Cursor = nowCursor;
-        }
-
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            //对于系统处理的按键使用SystemKey来获取,不能使用Key这个属性
-            if (e.SystemKey == Key.LeftAlt || e.SystemKey == Key.RightAlt)
-            {
-                e.Handled = true;
-                if (this.Menu_Main.Visibility == Visibility.Collapsed)
-                    this.Menu_Main.Visibility = Visibility.Visible;
-                else
-                    this.Menu_Main.Visibility = Visibility.Collapsed;
-            }
         }
 
         //实现画布的拖动扩大
@@ -57,8 +44,35 @@ namespace DrawingSoft
             {
 	            Point location = e.GetPosition(this.canvasDrawPanel);
 	            this.canvasDrawPanel.PaintBackground(location);
-	            //this.canvasDrawPanel.drawingVisualDashRect.Opacity = 0;
+	            this.canvasDrawPanel.drawingVisualDashRect.Opacity = 0;
             }
+        }
+
+        private void buttonTranlate_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.canvasDrawPanel.LastClickShape is ShapeControl)
+            {
+                ((ShapeControl)this.canvasDrawPanel.LastClickShape).Rotate();
+            }
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.canvasDrawPanel.LastClickShape is ShapeControl)
+            {
+                this.canvasDrawPanel.RemoveDrawingVisual();
+            }
+        }
+
+        private void newButton_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 2; i < this.canvasDrawPanel.listShapes.Count ; i++)
+            {
+                this.canvasDrawPanel.RemoveDrawingVisual(this.canvasDrawPanel.listShapes[i]);
+            }
+            int num = this.canvasDrawPanel.listShapes.Count;
+            Console.WriteLine(num);
+            this.canvasDrawPanel.listShapes.RemoveRange(2, num-2);
         }
     }
 }
